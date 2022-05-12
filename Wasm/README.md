@@ -15,7 +15,7 @@ To create the sample application, simply call make:
 
 To clean the static library and compiled objects use the provided clean script:
 
-`make -f wasm_static.mk clean`
+`make -f wasm_example.mk clean WOLFSSL_ROOT=<path>`
 
 ### Customization
 - To enable wolfssl benchmark tests, specify: `HAVE_WOLFSSL_BENCHMARK` at build

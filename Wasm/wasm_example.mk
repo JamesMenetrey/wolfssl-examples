@@ -50,4 +50,4 @@ all:
 
 .PHONY: clean
 clean:
-	rm -rf build
+	rm wolfssl_example.wasm
