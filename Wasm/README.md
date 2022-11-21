@@ -35,6 +35,17 @@ make compile_wasm WOLFSSL_ROOT=<path>
 make compile_aot
 ```
 
+## Executing the application
+
+Running the application expects to use the WebAssembly runtime WAMR.
+Furthermore, if the unit tests are executed, the working directory must be the repository of WolfSSL, since some tests require to have access to files.
+The runtime must be configured to let the application accesses the file system.
+Here is an example of command line for launching the unit tests:
+
+```
+iwasm --stack-size=10485760 --heap-size=10485760 --dir=. wasm_example.aot -t
+```
+
 ### Benchmarking
 
 As Wasm cannot leverage assembly or hardware optimizations, the results of the benchmarks can be compared to the native build with the following flags for a fair comparison:
