@@ -1,22 +1,26 @@
 # TLS Examples Makefile
+ifndef WOLFSSL_ROOT
+$(error WOLFSSL_ROOT is not set. Please set to root wolfssl directory)
+endif
+
 CC       = gcc
-LIB_PATH = /usr/local
-CFLAGS   = -Wall -I$(LIB_PATH)/include
-LIBS     = -L$(LIB_PATH)/lib -lm
+LIB_PATH = $(WOLFSSL_ROOT)/src
+CFLAGS   = -Wall -I$(WOLFSSL_ROOT)
+LIBS     = -L$(LIB_PATH)/.libs -lm
 
 # option variables
 DYN_LIB         = -lwolfssl
-STATIC_LIB      = $(LIB_PATH)/lib/libwolfssl.a
+STATIC_LIB      = $(LIB_PATH)/.libs/libwolfssl.a -lm
 DEBUG_FLAGS     = -g -DDEBUG
 DEBUG_INC_PATHS = -MD
-OPTIMIZE        = -Os
+OPTIMIZE        = -O3
 
 # Options
 #CFLAGS+=$(DEBUG_FLAGS)
 CFLAGS+=$(OPTIMIZE)
 #CFLAGS+=$(QAT_FLAGS)
 #LIBS+=$(QAT_LIBS)
-#LIBS+=$(STATIC_LIB)
+LIBS+=$(STATIC_LIB)
 LIBS+=$(DYN_LIB)
 
 # build targets
